@@ -26,8 +26,8 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends wget cu
     ln -s /webodm/nginx/crontab /var/spool/cron/crontabs/root && chmod 0644 /webodm/nginx/crontab && service cron start && chmod +x /webodm/nginx/letsencrypt-autogen.sh && \
     /webodm/nodeodm/setup.sh && /webodm/nodeodm/cleanup.sh && cd /webodm && \
     npm install --quiet -g webpack@4.16.5 && npm install --quiet -g webpack-cli@4.2.0 && npm install --quiet && webpack --mode production && \
-    echo "UTC" > /etc/timezone && \
-    python manage.py collectstatic --noinput && \
+    echo "UTC" > /etc/timezone &&    \
+ python manage.py collectstatic --noinput && \
     python manage.py rebuildplugins && \
     python manage.py translate build --safe && \
     # Cleanup
